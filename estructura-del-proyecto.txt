@@ -1,0 +1,18 @@
+Página de inicio (Contenido/Funcionalidades):
+- Fecha de inicio y fin del viaje
+- Cuenta (Crear e ingresar)
+- Recomendado para ti
+- Página de Viajero (Contenido/Funcionalidades):
+	- Perfil
+	-Experiencias: Contiene todos los calendarios de viajes.
+		- Experiencia: Es un calendario que permite agregar los tours, las fechas de llegada y 		de salida y las reservas.
+
+
+
+
+
+
+Funcionalidades y estructura de datos:
+- Viajero: perfil (nombre, foto, fecha de nacimiento, fecha de inscripción, correo, num telefónico, nacionalidad) - viaje (fecha, lugar, experiencia) - experiencia(nombre, fecha, lugar, descripción, precio, categoría, guía)
+
+- Guía: perfil (nombre de empresa, razón social, tipo de empresa, publico objetivo) - experiencias (nombre, fecha, precio, categoría, descripción, calificación, comentarios)
