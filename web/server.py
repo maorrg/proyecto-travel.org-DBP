@@ -4,6 +4,7 @@ from model import entities
 import datetime
 import json
 import time
+import smtplib #Enviar correos electronicos
 
 db = connector.Manager()
 engine = db.createEngine()
@@ -59,6 +60,79 @@ def create_viajeroDevExtream():
     session.add(viajero)
     session.commit()
     return 'Created Viajero'
+
+@app.route('/registrar' , methods =['POST'])
+def registrar():
+    nombre = request.form['nombre']
+    apellido = request.form['apellido']
+    correo = request.form['correo']
+    usuario = request.form['usuario']
+    contrasena = request.form['contrasena']
+    edad = request.form['edad']
+    pais = request.form['pais']
+
+    db_session = db.getSession(engine)
+
+    viajero = db_session.query(entities.Viajero).filter(
+        entities.Viajero.usuario == usuario
+    ).first()
+
+    if viajero != None:
+        return "UPS... El usuario ya existe, pruebe con otro o ingrese sesion"
+
+
+    viajero = entities.Viajero(
+        nombre= nombre,
+        apellido= apellido,
+        correo= correo,
+        usuario= usuario,
+        contrasena= contrasena,
+        edad = edad,
+        pais = pais
+    )
+    session = db.getSession(engine)
+    session.add(viajero)
+    session.commit()
+
+
+    return 'Viajero ' +usuario+ ' registrado'
+
+
+
+@app.route('/recuperar' , methods =['POST'])
+def recuperar_contrasena():
+    usuario = request.form['usuario']
+    correo = request.form['correo']
+
+    db_session = db.getSession(engine)
+
+    viajero = db_session.query(entities.Viajero).filter(
+        entities.Viajero.usuario == usuario
+    ).filter(
+        entities.Viajero.correo == correo
+    ).first()
+
+    if viajero != None:
+        session['usuario'] = usuario
+        session['logged_user'] = viajero.id
+        return render_template('recuperar.html')
+    else:
+        return "El usuario o el correo ingresado no es valido"
+
+
+@app.route('/recuperar/<id>' , methods =['PUT'])
+def cambiar_contrasena(id):
+    contrasena1 = request.form['contrasena1']
+    contrasena2 = request.form['contrasena2']
+
+    if contrasena1 == contrasena2:
+        session = db.getSession(engine)
+        viajero = session.query(entities.Viajero).filter(entities.Viajero.id == id).first()
+        setattr(viajero, 'contrasena', contrasena1)
+        session.add(viajero)
+        session.commit()
+        return 'Cambio de contrasena'
+
 
 @app.route('/viajeros/<id>', methods = ['GET'])
 def get_viajero(id):
@@ -121,6 +195,55 @@ def delete_viajeroDevExtream():
     session.delete(viajero)
     session.commit()
     return "Deleted Viajero"
+
+
+
+@app.route('/experiencias', methods = ['POST'])
+def create_experiencia():
+    c =  json.loads(request.form['values'])
+    experiencia = entities.Experiencia(
+        titulo=c['titulo'],
+        descripcion = c['descripcion'],
+        precio = c['precio'],
+        calificacion = c['calificacion'],
+        guia_id = c['guia_id'],
+        create_on=datetime.datetime(2000,2,2)
+    )
+    session = db.getSession(engine)
+    session.add(experiencia)
+    session.commit()
+    return 'Created Experiencia'
+
+
+@app.route('/experiencias', methods = ['GET'])
+def get_experienciasDevExtream():
+    sessionc = db.getSession(engine)
+    dbResponse = sessionc.query(entities.Experiencia)
+    data = dbResponse[:]
+    return Response(json.dumps(data, cls=connector.AlchemyEncoder), mimetype='application/json')
+
+
+@app.route('/experiencias', methods = ['PUT'])
+def update_experiencia():
+    session = db.getSession(engine)
+    id = request.form['key']
+    experiencia = session.query(entities.Experiencia).filter(entities.Experiencia.id == id).first()
+    c = json.loads(request.form['values'])
+    for key in c.keys():
+        setattr(experiencia, key, c[key])
+    session.add(experiencia)
+    session.commit()
+    return 'Updated Experiencia'
+
+@app.route('/experiencias', methods = ['DELETE'])
+def delete_experiencia():
+    id = request.form['key']
+    session = db.getSession(engine)
+    experiencia = session.query(entities.Experiencia).filter(entities.Experiencia.id == id).one()
+    session.delete(experiencia)
+    session.commit()
+    return "Deleted Experiencia"
+
 
 
 @app.route('/authenticate', methods = ['POST'])

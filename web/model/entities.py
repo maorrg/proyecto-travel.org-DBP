@@ -33,10 +33,10 @@ class Experiencia(connector.Manager.Base):
     titulo = Column(String(50))
     descripcion = Column(String(500))
     precio = Column(Integer)
+    fecha = Column(DateTime())
     calificacion = Column(Integer)
-    viajero_id = Column(Integer, ForeignKey('viajeros.id'))
     guia_id = Column(Integer, ForeignKey('guias.id'))
-
+    create_on = Column(DateTime,default=datetime.datetime.now())
 
 
 class Comentario(connector.Manager.Base):
@@ -46,3 +46,13 @@ class Comentario(connector.Manager.Base):
     descripcion = Column(String(500))
     viajero_id = Column(Integer, ForeignKey('viajeros.id'))
     guia_id = Column(Integer, ForeignKey('guias.id'))
+
+
+class Itinerario(connector.Manager.Base):
+    __tablename__ = 'intinerarios'
+    id = Column(Integer, Sequence('comentario_id_seq'), primary_key=True)
+    fecha_inicio = Column(DateTime())
+    fecha_fin = Column(DateTime())
+    viajero_id = Column(Integer, ForeignKey('viajeros.id'))
+    guia_id = Column(Integer, ForeignKey('guias.id'))
+    experiencias = {}
