@@ -15,21 +15,27 @@
     <meta name="author" content="">
 
     <!-- Site Icons -->
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/static/images/apple-touch-icon.png">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href='static/css/libs/bootstrap.min.css'>
     <!-- Site CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/static/css/style.css">
     <!-- Colors CSS -->
-    <link rel="stylesheet" href="css/colors.css">
+    <link rel="stylesheet" href="/static/css/colors.css">
     <!-- ALL VERSION CSS -->
-    <link rel="stylesheet" href="css/versions.css">
+    <link rel="stylesheet" href="/static/css/versions.css">
     <!-- Responsive CSS -->
-    <link rel="stylesheet" href="css/responsive.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="/static/css/responsive.css">
+
+    <link rel="stylesheet" href="/static/css/animate.css">
+    <link rel="stylesheet" href="/static/css/flaticon.css">
+    <link rel="stylesheet" href="/static/css/prettyPhoto.css">
+    <link rel="stylesheet" href="/static/css/owl.carousel.css">
+    <link rel="stylesheet" href="/static/css/font-awesome.css">
+
+
 
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -49,24 +55,24 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="calendar.html"><img src="images/logos/logo-seo.png" alt="image"></a>
+                    <a class="navbar-brand" href="/static/calendar.html"><img src="/static/images/logos/logo-seo.png" alt="image"></a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right menu-top">
                         <li><a class="active" href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us </a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="case-study.html">Case Study</a></li>
-                        <li><a href="pricing.html">Pricing</a></li>
-                        <li><a href="signup.html">Sign Up</a></li>
-                        <li><a href="login.html">Log In</a></li>
+                        <li><a href="/static/about.html">About Us </a></li>
+                        <li><a href="/static/services.html">Services</a></li>
+                        <li><a href="/static/case-study.html">Case Study</a></li>
+                        <li><a href="/static/pricing.html">Pricing</a></li>
+                        <li><a href="/static/signup.html">Sign Up</a></li>
+                        <li><a href="/static/login.html">Log In</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
 
-    <div id="home" class="parallax first-section" data-stellar-background-ratio="0.4" style="background-image:url('uploads/parallax_12.jpg');">
+    <div id="home" class="parallax first-section" data-stellar-background-ratio="0.4" style="background-image:url('/static/images/parallax_12.jpg');">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-sm-12">
@@ -78,7 +84,7 @@
                 </div>
 
                 <div class="app_iphone_02 wow slideInUp hidden-xs hidden-sm" data-wow-duration="1s" data-wow-delay="0.5s">
-                    <img src="uploads/rocket.png" alt="" class="img-responsive">
+                    <img src="/static/images/rocket.png" alt="" class="img-responsive">
                 </div>
             </div><!-- end row -->
         </div><!-- end container -->
@@ -121,24 +127,11 @@
 
                         <div class="testimonial clearfix">
                             <div class="desc">
-                                <h3><i class="fa fa-quote-left"></i> Awesome Services!</h3>
-                                <p class="lead">Explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you completed.</p>
-                            </div>
-                            <div class="testi-meta">
-                                <img src="uploads/testi_02.png" alt="" class="img-responsive alignleft">
-                                <h4>Jacques Philips <small>- Designer</small></h4>
-                            </div>
-                            <!-- end testi-meta -->
-                        </div>
-                        <!-- end testimonial -->
-
-                        <div class="testimonial clearfix">
-                            <div class="desc">
                                 <h3><i class="fa fa-quote-left"></i> Great & Talented Team!</h3>
                                 <p class="lead">The master-builder of human happines no one rejects, dislikes avoids pleasure itself, because it is very pursue pleasure. </p>
                             </div>
                             <div class="testi-meta">
-                                <img src="uploads/testi_03.png" alt="" class="img-responsive alignleft">
+                                <img src="/static/images/testi_03.png" alt="" class="img-responsive alignleft">
                                 <h4>Venanda Mercy <small>- Newyork City</small></h4>
                             </div>
                             <!-- end testi-meta -->
@@ -154,7 +147,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="post-media wow fadeIn">
-                        <img src="uploads/about_01.jpg" alt="" class="img-responsive img-rounded">
+                        <img src="/static/images/about_01.jpg" alt="" class="img-responsive img-rounded">
                         <a href="http://www.youtube.com/watch?v=nrJtHemSPW4" data-rel="prettyPhoto[gal]" class="playbutton"><i class="flaticon-play-button"></i></a>
                     </div><!-- end media -->
                 </div><!-- end col -->
@@ -213,7 +206,7 @@
 			<div class="seo-services row clearfix">
                 <div class="col-md-3 col-sm-6 col-xs-12">
 					<div class="who">
-						<img src="images/seo-icons/research.svg" alt="icon" class="wow fadeInUp">
+						<img src="/static/images/seo-icons/research.svg" alt="icon" class="wow fadeInUp">
 						<h4>Research Optimization</h4>
 						<p class="lead">Research Ipsum dolroin gravida nibh vel velit aliquet. Aenean lorem quis optimization..</p>
 					</div>
@@ -221,7 +214,7 @@
 
                 <div class="col-md-3 col-sm-6 col-xs-12">
 					<div class="who">
-						<img src="images/seo-icons/stopwatch.svg" alt="icon" class="wow fadeInUp">
+						<img src="/static/images/seo-icons/stopwatch.svg" alt="icon" class="wow fadeInUp">
 						<h4>Save Time + Money</h4>
 						<p class="lead">Te ahorramos tiempo en buscar distintos eventos/paquetes y ofrecerte los que más te convengan para país que estes viajando</p>
 					</div>
@@ -247,8 +240,8 @@
                 <div class="owl-screen">
                     <div class="service-widget">
                         <div class="post-media entry wow fadeIn">
-                            <a href="uploads/version_01.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
-                            <img src="uploads/version_01.jpg" alt="" class="img-responsive img-rounded">
+                            <a href="/static/images/version_01.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
+                            <img src="/static/images/version_01.jpg" alt="" class="img-responsive img-rounded">
                             <div class="magnifier"></div>
                         </div>
 
@@ -257,50 +250,14 @@
                     </div><!-- end service -->
                 </div><!-- end col -->
 
-                <div class="owl-screen">
-                    <div class="service-widget">
-                        <div class="post-media entry wow fadeIn">
-                            <a href="uploads/version_02.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
-                            <img src="uploads/version_02.jpg" alt="" class="img-responsive img-rounded">
-                            <div class="magnifier"></div>
-                        </div>
 
-                        <h3>App Project</h3>
-                        <small>Landing Page</small>
-                    </div><!-- end service -->
-                </div><!-- end col -->
+
 
                 <div class="owl-screen">
                     <div class="service-widget">
                         <div class="post-media entry wow fadeIn">
-                            <a href="uploads/version_03.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
-                            <img src="uploads/version_03.jpg" alt="" class="img-responsive img-rounded">
-                            <div class="magnifier"></div>
-                        </div>
-
-                        <h3>Watch Project</h3>
-                        <small>Landing Page</small>
-                    </div><!-- end service -->
-                </div><!-- end col -->
-
-                <div class="owl-screen">
-                    <div class="service-widget">
-                        <div class="post-media entry wow fadeIn">
-                            <a href="uploads/version_04.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
-                            <img src="uploads/version_04.jpg" alt="" class="img-responsive img-rounded">
-                            <div class="magnifier"></div>
-                        </div>
-
-                        <h3>Hosting Project</h3>
-                        <small>Landing Page</small>
-                    </div><!-- end service -->
-                </div><!-- end col -->
-
-                <div class="owl-screen">
-                    <div class="service-widget">
-                        <div class="post-media entry wow fadeIn">
-                            <a href="uploads/version_05.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
-                            <img src="uploads/version_05.jpg" alt="" class="img-responsive img-rounded">
+                            <a href="/static/images/version_05.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
+                            <img src="/static/images/version_05.jpg" alt="" class="img-responsive img-rounded">
                             <div class="magnifier"></div>
                         </div>
 
@@ -351,14 +308,10 @@
 
             <div class="row">
                 <div id="logo-carousel" class="owl-carousel">
-					<div> <img src="uploads/logo_01.png" alt=""> </div>
-					<div> <img src="uploads/logo_02.png" alt=""> </div>
-					<div> <img src="uploads/logo_03.png" alt=""> </div>
-					<div> <img src="uploads/logo_04.png" alt=""> </div>
-					<div> <img src="uploads/logo_05.png" alt=""> </div>
-					<div> <img src="uploads/logo_06.png" alt=""> </div>
-					<div> <img src="uploads/logo_01.png" alt=""> </div>
-					<div> <img src="uploads/logo_02.png" alt=""> </div>
+					<div> <img src="/static/images/logo_01.png" alt=""> </div>
+                    <div> <img src="/static/images/logo_02.png" alt=""> </div>
+
+
 				</div>
             </div><!-- end row -->
         </div><!-- end container -->
@@ -395,7 +348,7 @@
                 <div class="col-md-4 col-sm-4 col-xs-12">
                     <div class="widget clearfix">
                         <div class="widget-title">
-                            <img src="images/logos/logo-light.png" alt="">
+                            <img src="/static/images/logos/logo-light.png" alt="">
                         </div>
                         <p> TravelOrg trabaja en Lima, Perú.</p>
                     </div><!-- end clearfix -->
@@ -452,9 +405,9 @@
     <a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
 
     <!-- ALL JS FILES -->
-    <script src="js/all.js"></script>
+    <script src="/static/js/all.js"></script>
     <!-- ALL PLUGINS -->
-    <script src="js/custom.js"></script>
+    <script src="/static/js/custom.js"></script>
 
 </body>
 </html>
