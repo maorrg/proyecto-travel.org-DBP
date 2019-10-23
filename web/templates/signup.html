@@ -19,7 +19,7 @@
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
         <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href='static/css/libs/bootstrap.min.css'>
+    <link rel="stylesheet" href='/static/css/libs/bootstrap.min.css'>
     <!-- Site CSS -->
     <link rel="stylesheet" href="/static/css/style.css">
     <!-- Colors CSS -->
@@ -124,13 +124,16 @@
                 <div class="col-md-6">
                     <div class="contact_form">
                         <div id="message"></div>
-                        <form id="contactform" class="row" action="contact.php" name="contactform" method="post">
                             <fieldset class="row-fluid">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center">
-                                    <input type="text" name="first_name" id="first_name" class="form-control" placeholder="First Name">
-                                    <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Last Name">
-                                    <input type="email" name="email" id="email" class="form-control" placeholder="Your Email">
-                                    <input type="text" name="age" id="age" class="form-control" placeholder="Your Age">
+                                    <form class="row" name="contactform" method="post" action="/registrar">
+
+                                    <input type="text" name="nombre" class="form-control" placeholder="First Name">
+                                    <input type="text" name="apellido" class="form-control" placeholder="Last Name">
+                                    <input type="email" name="correo" class="form-control" placeholder="Your Email">
+                                    <input type="text" name="edad" class="form-control" placeholder="Your Age">
+                                        <input type="text" name="pais" class="form-control" placeholder="Country">
+
                                 <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <label class="sr-only">Select Department</label>
                                     <select name="select_service" id="select_service" class="selectpicker form-control" data-style="btn-white">
@@ -141,13 +144,14 @@
                                         <option value="Others">Others</option>
                                     </select>
                                 </div> -->
-                                    <input type="text" name="username" id="username" class="form-control" placeholder="Username">
-                                    <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+                                    <input type="text" name="usuario" class="form-control" placeholder="Username">
+                                    <input type="password" name="contrasena" class="form-control" placeholder="Password">
 
-                                    <button type="submit" value="SEND" id="submit" class="btn btn-light btn-radius btn-brd grd1 btn-block">Registrarse</button>
+                                    <button type="submit" value="registrar" id="submit" class="btn btn-light btn-radius btn-brd grd1 btn-block">Registrarse</button>
+                                    </form>
+
                                 </div>
                             </fieldset>
-                        </form>
                     </div>
                 </div><!-- end col -->
 				<div class="col-md-6">

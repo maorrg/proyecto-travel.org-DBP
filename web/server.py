@@ -4,7 +4,6 @@ from model import entities
 import datetime
 import json
 import time
-import smtplib #Enviar correos electronicos
 
 db = connector.Manager()
 engine = db.createEngine()
@@ -23,24 +22,23 @@ def static_content(content):
 #Login con metodo post
 @app.route('/login' , methods =['POST']) #Como se puede utilizar mas de un metodo, se recibibe un arreglo
 def login():
-    #El metodo crea un diccionario en donde la clave es el nombre del input y el valor es el contenido ingresado
-    username = request.form['user'] #Le asignamos a la variable username lo ingresado en el formulario insertado en el html
-    password = request.form['password']
+    usuario = request.form['usuario']
+    contrasena = request.form['contrasena']
 
     db_session = db.getSession(engine)
 
-    user = db_session.query(entities.User).filter(
-        entities.User.username == username
+    viajero = db_session.query(entities.Viajero).filter(
+        entities.Viajero.usuario == usuario
     ).filter(
-    entities.User.password == password
+    entities.Viajero.contrasena == contrasena
     ).first()
 
-    if user != None:
-        session['usuario'] = username
-        session['logged_user'] = user.id
-        return render_template('chat.html')
+    if viajero != None:
+        session['usuario'] = usuario
+        session['logged_user'] = viajero.id
+        return render_template('calendar.html')
     else:
-        return "Sorry "+username+" no esta en la base de datos"
+        return render_template('recuperar.html')
 
 
 @app.route('/viajeros', methods = ['POST'])
@@ -100,38 +98,19 @@ def registrar():
 
 
 @app.route('/recuperar' , methods =['POST'])
-def recuperar_contrasena():
+def recuperar_cuenta():
     usuario = request.form['usuario']
     correo = request.form['correo']
-
-    db_session = db.getSession(engine)
-
-    viajero = db_session.query(entities.Viajero).filter(
-        entities.Viajero.usuario == usuario
-    ).filter(
-        entities.Viajero.correo == correo
-    ).first()
-
-    if viajero != None:
-        session['usuario'] = usuario
-        session['logged_user'] = viajero.id
-        return render_template('recuperar.html')
-    else:
-        return "El usuario o el correo ingresado no es valido"
-
-
-@app.route('/recuperar/<id>' , methods =['PUT'])
-def cambiar_contrasena(id):
     contrasena1 = request.form['contrasena1']
     contrasena2 = request.form['contrasena2']
 
-    if contrasena1 == contrasena2:
-        session = db.getSession(engine)
-        viajero = session.query(entities.Viajero).filter(entities.Viajero.id == id).first()
-        setattr(viajero, 'contrasena', contrasena1)
-        session.add(viajero)
-        session.commit()
-        return 'Cambio de contrasena'
+    session = db.getSession(engine)
+    viajero = session.query(entities.Viajero).filter(entities.Viajero.usuario == usuario).first()
+    c = json.loads(request.data)
+    c['contrasena'] = contrasena1
+    session.add(viajero)
+    session.commit()
+    return 'Cambiar contrasena'
 
 
 @app.route('/viajeros/<id>', methods = ['GET'])

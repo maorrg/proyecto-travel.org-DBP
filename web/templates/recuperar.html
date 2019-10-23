@@ -3,7 +3,7 @@
 
     <!-- Basic -->
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 
     <!-- Basic -->
@@ -131,12 +131,15 @@
                         <div id="message"></div>
                             <fieldset class="row-fluid">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center">
-                                    <form class="row" method="post" action="/login" name="contactform">
+                                    <form class="row" method="post" action="/recuperar" name="contactform">
 
-                                    <input type="text" name="usuario" class="form-control" placeholder="Username">
-                                    <input type="password" name="contrasena" class="form-control" placeholder="Password">
+                                    <input type="text" name="usuario" class="form-control" placeholder="Usuario">
+                                    <input type="text" name="correo" class="form-control" placeholder="Correo">
 
-                                    <button type="submit" value="SEND" class="btn btn-light btn-radius btn-brd grd1 btn-block">Log In</button>
+                                    <input type="password" name="contrasena1" class="form-control" placeholder="Ingrese su NUEVA contraseña">
+                                    <input type="password" name="contrasena2" class="form-control" placeholder="Vuelva a escribir su  NUEVA contraseña">
+
+                                    <button type="submit" value="SEND" id="submit" class="btn btn-light btn-radius btn-brd grd1 btn-block">Log In</button>
                                     </form>
                                 </div>
                             </fieldset>
@@ -196,7 +199,7 @@
 
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
- 
+
      <!-- Site Metas -->
     <title>Log In</title>
     <meta name="keywords" content="">
@@ -307,11 +310,12 @@
                 <div class="col-md-6">
                     <div class="contact_form">
                         <div id="message"></div>
-                        <form id="contactform" class="row" action="contact.php" name="contactform" method="post">
+                        <form class="row" method="post" action="" name="contactform">
                             <fieldset class="row-fluid">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center">
-                                    <input type="text" name="username" id="username" class="form-control" placeholder="Username">
-                                    <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+
+                                    <input type="password" name="contrasena1" class="form-control" placeholder="Ingrese su contraseña">
+                                    <input type="password" name="contrasena2" class="form-control" placeholder="Vuelva a escribir su contraseña">
 
                                     <button type="submit" value="SEND" id="submit" class="btn btn-light btn-radius btn-brd grd1 btn-block">Log In</button>
                                 </div>
