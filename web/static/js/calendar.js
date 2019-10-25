@@ -17,6 +17,7 @@ function info_viajero(){
 
     f = '<button type="button" class="btn btn-warning" onclick="get_experiencias('+id+')">Traer Experiencias</button>'
     $("#boton").append(f);
+
     });
 }
 
