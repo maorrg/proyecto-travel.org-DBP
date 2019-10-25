@@ -1,47 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <!-- Basic -->
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
-   
-    <!-- Mobile Metas -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
- 
-     <!-- Site Metas -->
     <title>FlaxSEO - Responsive HTML5 Template</title>  
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
-
-    <!-- Site Icons -->
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-
-        <!-- Bootstrap CSS -->
     <link rel="stylesheet" href='/static/css/libs/bootstrap.min.css'>
-    <!-- Site CSS -->
     <link rel="stylesheet" href="/static/css/style.css">
-    <!-- Colors CSS -->
     <link rel="stylesheet" href="/static/css/colors.css">
-    <!-- ALL VERSION CSS -->
     <link rel="stylesheet" href="/static/css/versions.css">
-    <!-- Responsive CSS -->
     <link rel="stylesheet" href="/static/css/responsive.css">
-
     <link rel="stylesheet" href="/static/css/animate.css">
     <link rel="stylesheet" href="/static/css/flaticon.css">
     <link rel="stylesheet" href="/static/css/prettyPhoto.css">
     <link rel="stylesheet" href="/static/css/owl.carousel.css">
     <link rel="stylesheet" href="/static/css/font-awesome.css">
-
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
+    <script src="/static/js/libs/jquery.js"></script>
+    <script src="/static/js/services.js"></script>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 </head>
-<body class="seo_version">
+
+
+<body class="seo_version" onload="get_experiencias()">
 
     <header class="header header_style_01">
         <nav class="megamenu navbar navbar-default">
@@ -64,6 +50,7 @@
                         <li><a href="pricing.html">Pricing</a></li>
                         <li><a href="signup.html">Sign Up</a></li>
                         <li><a href="login.html">Log In</a></li>
+                        <li><a href="/logout">Log Out</a></li>
                     </ul>
                 </div>
             </div>
@@ -116,74 +103,17 @@
     <div id="services" class="section wb">
         <div class="container">
             <div class="section-title text-center">
-                <small>OnePage SEO - Validation - BACKLINKS</small>
-                <h3>SEO Services</h3>
-                <p class="lead">We offer unlimited solutions to all your business needs. in the installation package we prepare search engine optimization, social media support, we provide corporate identity and graphic design services.</p>
+                <small>Travel.org, las mejores experiencias de turismo</small>
+                <h3>Paquetes y Servicios de turismo</h3>
+                <p class="lead">Ofrecemos una amplia variedad de productos, al mejor precio, en un solo lugar y desde la comodidad de tu casa.</p>
             </div><!-- end title -->
-            <div class="row text-center">
-                <div class="col-md-4 col-sm-4 col-xs-12">
-                    <div class="service-widget">
-                        <div class="post-media wow fadeIn">
-                            <img src="uploads/seo_01.png" alt="" class="img-responsive img-rounded">
-                        </div>
-                        <h3>SEO Optimization</h3>
-                        <p>Aliquam sagittis ligula et sem lacinia, ut facilisis enim sollicitudin. Proin nisi est, convallis nec purus vitae, iaculis posuere sapien. Cum sociis natoque.</p>
-                    </div><!-- end service -->
-                </div><!-- end col -->
+            <div class="row text-center" id="servicios">
 
-                <div class="col-md-4 col-sm-4 col-xs-12">
-                    <div class="service-widget">
-                        <div class="post-media wow fadeIn">
-                            <img src="uploads/seo_02.png" alt="" class="img-responsive img-rounded">
-                        </div>
-                        <h3>Backlink Management</h3>
-                        <p>Duis at tellus at dui tincidunt scelerisque nec sed felis. Suspendisse id dolor sed leo rutrum euismod. Nullam vestibulum fermentum erat. It nam auctor. </p>
-                    </div><!-- end service -->
-                </div><!-- end col -->
 
-                <div class="col-md-4 col-sm-4 col-xs-12">
-                    <div class="service-widget">
-                        <div class="post-media wow fadeIn">
-                            <img src="uploads/seo_03.png" alt="" class="img-responsive img-rounded">
-                        </div>
-                        <h3>Pay Per Click</h3>
-                        <p>Etiam materials ut mollis tellus, vel posuere nulla. Etiam sit amet lacus vitae massa sodales aliquam at eget quam. Integer ultricies et magna quis accumsan.</p>
-                    </div><!-- end service -->
-                </div><!-- end col -->
-            </div><!-- end row -->
 
-            <hr class="invis">
 
-            <div class="row text-center">
-                <div class="col-md-4 col-sm-4 col-xs-12">
-                    <div class="service-widget">
-                        <div class="post-media wow fadeIn">
-                            <img src="uploads/seo_04.png" alt="" class="img-responsive img-rounded">
-                        </div>
-                        <h3>Dashboard Statics</h3>
-                        <p>Aliquam sagittis ligula et sem lacinia, ut facilisis enim sollicitudin. Proin nisi est, convallis nec purus vitae, iaculis posuere sapien. Cum sociis natoque.</p>
-                    </div><!-- end service -->
-                </div><!-- end col -->
 
-                <div class="col-md-4 col-sm-4 col-xs-12">
-                    <div class="service-widget">
-                        <div class="post-media wow fadeIn">
-                            <img src="uploads/seo_05.png" alt="" class="img-responsive img-rounded">
-                        </div>
-                        <h3>Onepage SEO</h3>
-                        <p>Duis at tellus at dui tincidunt scelerisque nec sed felis. Suspendisse id dolor sed leo rutrum euismod. Nullam vestibulum fermentum erat. It nam auctor. </p>
-                    </div><!-- end service -->
-                </div><!-- end col -->
 
-                <div class="col-md-4 col-sm-4 col-xs-12">
-                    <div class="service-widget">
-                        <div class="post-media wow fadeIn">
-                            <img src="uploads/seo_06.png" alt="" class="img-responsive img-rounded">
-                        </div>
-                        <h3>Black Hat SEO</h3>
-                        <p>Etiam materials ut mollis tellus, vel posuere nulla. Etiam sit amet lacus vitae massa sodales aliquam at eget quam. Integer ultricies et magna quis accumsan.</p>
-                    </div><!-- end service -->
-                </div><!-- end col -->
             </div><!-- end row -->
         </div><!-- end container -->
     </div><!-- end section -->

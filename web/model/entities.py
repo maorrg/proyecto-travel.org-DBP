@@ -51,8 +51,8 @@ class Comentario(connector.Manager.Base):
 class Itinerario(connector.Manager.Base):
     __tablename__ = 'intinerarios'
     id = Column(Integer, Sequence('comentario_id_seq'), primary_key=True)
+    id_experiencia = Column(Integer)
+    id_viajero = Column(Integer)
+    id_guia = Column(Integer)
     fecha_inicio = Column(DateTime())
     fecha_fin = Column(DateTime())
-    viajero_id = Column(Integer, ForeignKey('viajeros.id'))
-    guia_id = Column(Integer, ForeignKey('guias.id'))
-    experiencias = {}

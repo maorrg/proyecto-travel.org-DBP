@@ -185,7 +185,6 @@ def create_experiencia():
         descripcion = c['descripcion'],
         precio = c['precio'],
         calificacion = c['calificacion'],
-        guia_id = c['guia_id'],
         create_on=datetime.datetime(2000,2,2)
     )
     session = db.getSession(engine)
@@ -200,6 +199,17 @@ def get_experienciasDevExtream():
     dbResponse = sessionc.query(entities.Experiencia)
     data = dbResponse[:]
     return Response(json.dumps(data, cls=connector.AlchemyEncoder), mimetype='application/json')
+
+@app.route('/experiencias/<id>', methods = ['GET'])
+def get_experienciaid(id):
+    db_session = db.getSession(engine)
+    experiencias = db_session.query(entities.Experiencia).filter(entities.Experiencia.id == id)
+    for experiencia in experiencias:
+        js = json.dumps(experiencia, cls=connector.AlchemyEncoder)
+        return  Response(js, status=200, mimetype='application/json')
+
+    message = { 'status': 404, 'message': 'Not Found'}
+    return Response(message, status=404, mimetype='application/json')
 
 
 @app.route('/experiencias', methods = ['PUT'])
@@ -223,6 +233,40 @@ def delete_experiencia():
     session.commit()
     return "Deleted Experiencia"
 
+
+
+@app.route('/itinerario', methods = ['POST'])
+def agregar_experiencia():
+    c = json.loads(request.data)
+    itinerario = entities.Itinerario(
+        id_experiencia=c['id_experiencia'],
+        id_viajero = c['id_viajero'],
+        id_guia = c['id_guia']
+    )
+    session = db.getSession(engine)
+    session.add(itinerario)
+    session.commit()
+    return 'Created Itinerario'
+
+
+@app.route('/itinerario', methods = ['GET'])
+def get_itinerario():
+    sessionc = db.getSession(engine)
+    dbResponse = sessionc.query(entities.Itinerario)
+    data = dbResponse[:]
+    return Response(json.dumps(data, cls=connector.AlchemyEncoder), mimetype='application/json')
+
+
+@app.route('/itinerario/<id_viajero>', methods = ['GET'])
+def get_experiencias_viajero(id_viajero):
+    db_session = db.getSession(engine)
+    experiencias = db_session.query(entities.Itinerario).filter(
+        entities.Itinerario.id_viajero == id_viajero)
+
+    data = []
+    for experiencia in experiencias:
+        data.append(experiencia)
+    return Response(json.dumps(data, cls=connector.AlchemyEncoder), mimetype='application/json')
 
 
 @app.route('/authenticate', methods = ['POST'])
@@ -251,14 +295,17 @@ def authenticate():
 
 @app.route('/current', methods = ['GET'])
 def current_user():
-    db_session = db.getSession(engine)
-    user = db_session.query(entities.User).filter(entities.User.id == session['logged_user']).first()
-    return Response(json.dumps(user,cls=connector.AlchemyEncoder),mimetype='application/json')
+    if 'usuario' in session:
+        db_session = db.getSession(engine)
+        viajero = db_session.query(entities.Viajero).filter(entities.Viajero.id == session['logged_user']).first()
+        return Response(json.dumps(viajero,cls=connector.AlchemyEncoder),mimetype='application/json')
+    else:
+        return render_template('index.html')
 
 @app.route('/logout', methods = ['GET'])
 def logout():
     session.clear()
-    return render_template('login.html')
+    return render_template('index.html')
 
 
 

@@ -1,81 +1,118 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Calendar</title>
-  <meta name="description" content="Calendar">
-  <meta name="author" content="Charles Anderson">
-  <link rel="stylesheet" href="/static/css/calendar_style.css">
+    <meta charset="UTF-8">
+    <title>Calendario</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/style_calendar.css">
+    <script src="/static/js/calendar.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Home</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/static/images/apple-touch-icon.png">
+    <link rel="stylesheet" href='/static/css/libs/bootstrap.min.css'>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/colors.css">
+    <link rel="stylesheet" href="/static/css/versions.css">
+    <link rel="stylesheet" href="/static/css/responsive.css">
+    <link rel="stylesheet" href="/static/css/animate.css">
+    <link rel="stylesheet" href="/static/css/flaticon.css">
+    <link rel="stylesheet" href="/static/css/prettyPhoto.css">
+    <link rel="stylesheet" href="/static/css/owl.carousel.css">
+    <link rel="stylesheet" href="/static/css/font-awesome.css">
+    <script src="/static/js/libs/jquery.js"></script>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 </head>
-<script src="/static/js/calendar.js"></script>
+<body onload="info_viajero()">
+<header class="header header_style_01">
+        <nav class="megamenu navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/static/calendar.html"><img src="/static/images/logos/logo-seo.png" alt="image"></a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right menu-top">
+                        <li><a class="active" href="index.html">Home</a></li>
+                        <li><a href="/static/about.html">About Us </a></li>
+                        <li><a href="/static/services.html">Services</a></li>
+                        <li><a href="/static/case-study.html">Case Study</a></li>
+                        <li><a href="/static/pricing.html">Pricing</a></li>
+                        <li><a href="/static/signup.html">Sign Up</a></li>
+                        <li><a href="/static/login.html">Log In</a></li>
+                        <li><a href="/logout">Log Out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-<body>
-  <div class="content">
-    <div class="calendar-container">
-      <div class="calendar">
-        <div class="year-header">
-          <span class="left-button" id="prev"> &lang; </span>
-          <span class="year" id="label"></span>
-          <span class="right-button" id="next"> &rang; </span>
-        </div>
-        <table class="months-table">
-          <tbody>
-            <tr class="months-row">
-              <td class="month">Jan</td>
-              <td class="month">Feb</td>
-              <td class="month">Mar</td>
-              <td class="month">Apr</td>
-              <td class="month">May</td>
-              <td class="month">Jun</td>
-              <td class="month">Jul</td>
-              <td class="month">Aug</td>
-              <td class="month">Sep</td>
-              <td class="month">Oct</td>
-              <td class="month">Nov</td>
-              <td class="month">Dec</td>
-            </tr>
-          </tbody>
-        </table>
 
-        <table class="days-table">
-          <td class="day">Sun</td>
-          <td class="day">Mon</td>
-          <td class="day">Tue</td>
-          <td class="day">Wed</td>
-          <td class="day">Thu</td>
-          <td class="day">Fri</td>
-          <td class="day">Sat</td>
-        </table>
-        <div class="frame">
-          <table class="dates-table">
-              <tbody class="tbody">
-              </tbody>
-          </table>
-        </div>
-        <button class="button" id="add-button">Add Event</button>
-      </div>
+<div class="informacion">
+
+<div id="perfil">
+   <table class="table table-striped table-dark">
+    <thead>
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
+      <th scope="col">Usuario</th>
+        <th scope="col">Edad</th>
+      <th scope="col">Pais</th>
+
+    </tr>
+    </thead>
+   <tbody id="info_usuario">
+
+
+
+
+  </tbody>
+</table>
+</div>
+
+<div id="itinerario">
+    <table class="table table-dark">
+    <thead>
+    <tr class="table-dark">
+      <th scope="col">Fecha</th>
+      <th scope="col">Nombre de experiencia</th>
+      <th scope="col">Descripción</th>
+        <th scope="col">Calificación</th>
+
+    </tr>
+    </thead>
+    <tbody id="experiencias">
+
+
+
+
+    </tbody>
+
+
+
+    </table>
+
+</div>
+
+    <div id="boton">
+
+
     </div>
-    <div class="events-container">
-    </div>
-    <div class="dialog" id="dialog">
-        <h2 class="dialog-header"> Add New Event </h2>
-        <form class="form" id="form">
-          <div class="form-container" align="center">
-            <label class="form-label" id="valueFromMyButton" for="name">Event name</label>
-            <input class="input" type="text" id="name" maxlength="36">
-            <label class="form-label" id="valueFromMyButton" for="count">Number of people to invite</label>
-            <input class="input" type="number" id="count" min="0" max="1000000" maxlength="7">
-            <input type="button" value="Cancel" class="button" id="cancel-button">
-            <input type="button" value="OK" class="button" id="ok-button">
-          </div>
-        </form>
-      </div>
-  </div>
-  <!-- Dialog Box-->
-  <script
-    src="https://code.jquery.com/jquery-3.2.1.min.js"
-    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-    crossorigin="anonymous">
-  </script>
-  <script src="app.js"></script>
+
+
+</div>
+
+
 </body>
 </html>
