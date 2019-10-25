@@ -10,7 +10,7 @@ class Manager:
 
     def createEngine(self):
         #engine = create_engine('sqlite:///data.db?check_same_thread=False', echo=False)
-        engine = create_engine('postgresql+psycopg2://usuario:contrasena@localhost/travelorg')
+        engine = create_engine('postgresql+psycopg2://oajoycienqwjry:befc8cb910762cc45c36fa6ab5d08608ed4d7b58bcd28c7a331355b69da5c8b4@ec2-174-129-29-101.compute-1.amazonaws.com/d6ghqimq11cebu')
         self.Base.metadata.create_all(engine)
         return engine
 
