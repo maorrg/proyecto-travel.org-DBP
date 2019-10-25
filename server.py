@@ -1,6 +1,7 @@
 from flask import Flask,render_template, request, session, Response, redirect
 from database import connector
 from model import entities
+from flask_cors import CORS
 import datetime
 import json
 import time
@@ -9,6 +10,7 @@ db = connector.Manager()
 engine = db.createEngine()
 
 app = Flask(__name__)
+CORS(app, supports_credentials=True)
 
 @app.route('/')
 def index():
