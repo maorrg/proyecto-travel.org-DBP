@@ -1,6 +1,6 @@
 
 function get_experienciasDevExtream(){
-    var url = "http://127.0.0.1:8000/experiencias";
+    var url = "https://travelorg.herokuapp.com/experiencias";
      $("#grid").dxDataGrid({
          dataSource: DevExpress.data.AspNet.createStore({
              key: "id",

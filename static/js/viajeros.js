@@ -1,6 +1,6 @@
 
 function get_viajerosDevExtream(){
-    var url = "http://127.0.0.1:8000/viajeros";
+    var url = "https://travelorg.herokuapp.com/viajeros";
      $("#grid").dxDataGrid({
          dataSource: DevExpress.data.AspNet.createStore({
              key: "id",
