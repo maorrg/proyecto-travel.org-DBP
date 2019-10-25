@@ -39,4 +39,6 @@ var cont = JSON.stringify({
     dataType: 'json'
  });
      });
+
+     alert("Se ha agregado correctamente la experiencia #"+id_exp);
 }
