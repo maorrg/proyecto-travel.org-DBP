@@ -179,7 +179,8 @@ def delete_viajeroDevExtream():
 
 @app.route('/experiencias', methods = ['POST'])
 def create_experiencia():
-    c =  json.loads(request.form['values'])
+    #c =  json.loads(request.form['values'])
+    c = json.loads(request.data)
     experiencia = entities.Experiencia(
         titulo=c['titulo'],
         descripcion = c['descripcion'],
@@ -233,6 +234,13 @@ def delete_experiencia():
     session.commit()
     return "Deleted Experiencia"
 
+@app.route('/experiencia/<id>', methods = ['DELETE'])
+def delete_experiencia_id(id):
+    session = db.getSession(engine)
+    experiencia = session.query(entities.Experiencia).filter(entities.Experiencia.id == id).one()
+    session.delete(experiencia)
+    session.commit()
+    return "Deleted Experiencia"
 
 
 @app.route('/itinerario', methods = ['POST'])
@@ -247,6 +255,34 @@ def agregar_experiencia():
     session.add(itinerario)
     session.commit()
     return 'Created Itinerario'
+
+
+@app.route('/itinerarioAdd', methods = ['POST'])
+def agregar_experiencia_json():
+    c = json.loads(request.data)
+    itinerario = entities.Itinerario(
+        id_experiencia=c['id_experiencia'],
+        id_viajero = c['id_viajero'],
+        id_guia = c['id_guia']
+    )
+
+    id_itne = c['id_experiencia']
+    id_viaj = c['id_viajero']
+
+    session = db.getSession(engine)
+
+    experiencia = session.query(entities.Itinerario).filter(
+        entities.Itinerario.id_experiencia == id_itne
+    ).filter(entities.Itinerario.id_viajero == id_viaj).first()
+
+    if experiencia == None:
+        session.add(itinerario)
+        session.commit()
+        message = { 'status': 200, 'message': 'Agregado'}
+        return Response(json.dumps(message), status=200, mimetype='application/json')
+    else:
+        message = { 'status':400,'message': 'No agregado'}
+        return Response(json.dumps(message),status=404, mimetype='application/json')
 
 
 @app.route('/itinerario', methods = ['GET'])
@@ -269,28 +305,55 @@ def get_experiencias_viajero(id_viajero):
     return Response(json.dumps(data, cls=connector.AlchemyEncoder), mimetype='application/json')
 
 
+@app.route('/itinerarioDatos/<id_viajero>', methods = ['GET'])
+def get_experiencias_viajero2(id_viajero):
+    db_session = db.getSession(engine)
+    experiencias = db_session.query(entities.Itinerario).filter(
+        entities.Itinerario.id_viajero == id_viajero)
+
+    datos = db_session.query(entities.Experiencia)
+
+    data = []
+    for experiencia in experiencias:
+        for dato in datos:
+            if(experiencia.id_experiencia == dato.id):
+                data.append(dato)
+
+    return Response(json.dumps(data, cls=connector.AlchemyEncoder), mimetype='application/json')
+
+
+@app.route('/deleteExperiencia/<id_exp>/<id_user>', methods = ['DELETE'])
+def borrar_experiencia_del_itinerario(id_exp,id_user):
+    session = db.getSession(engine)
+    experiencia = session.query(entities.Itinerario).filter(entities.Itinerario.id_experiencia == id_exp).filter(entities.Itinerario.id_viajero == id_user).one()
+    session.delete(experiencia)
+    session.commit()
+    message = { 'status': 200, 'message': 'Borrado'}
+    return Response(json.dumps(message), status=200, mimetype='application/json')
+
+
 @app.route('/authenticate', methods = ['POST'])
 def authenticate():
     #Get data form request
-    time.sleep(3)
+    #time.sleep(3)
     message = json.loads(request.data)
-    username = message['username']
-    password = message['password']
+    username = message['usuario']
+    password = message['contrasena']
 
     # Look in database
     db_session = db.getSession(engine)
 
     try:
-        user = db_session.query(entities.User
-            ).filter(entities.User.username==username
-            ).filter(entities.User.password==password
+        viajero = db_session.query(entities.Viajero
+            ).filter(entities.Viajero.usuario==username
+            ).filter(entities.Viajero.contrasena==password
             ).one()
-        session['logged_user'] = user.id
-        message = {'message':'Authorized'}
-        return Response(message, status=200,mimetype='application/json')
+        session['logged_user'] = viajero.id
+        message = {'message':'Authorized','user_id':viajero.id,'username':viajero.usuario,'nombre':viajero.nombre}
+        return Response(json.dumps(message), status=200,mimetype='application/json')
     except Exception:
         message = {'message':'Unauthorized'}
-        return Response(message, status=401,mimetype='application/json')
+        return Response(json.dumps(message), status=401,mimetype='application/json')
 
 
 @app.route('/current', methods = ['GET'])
