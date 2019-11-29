@@ -349,9 +349,6 @@ def authenticate():
     ).first()
 
     if viajero != None:
-        session['usuario'] = usuario
-        session['logged_user'] = viajero.id
-        session['logged_user'] = viajero.id
         message = {'message':'Authorized','user_id':viajero.id,'username':viajero.usuario,'nombre':viajero.nombre}
         return Response(json.dumps(message), status=200,mimetype='application/json')
     else:
