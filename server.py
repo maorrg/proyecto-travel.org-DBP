@@ -336,22 +336,25 @@ def borrar_experiencia_del_itinerario(id_exp,id_user):
 def authenticate():
     #Get data form request
     #time.sleep(3)
-    message = json.loads(request.data)
-    username = message['usuario']
-    password = message['contrasena']
+    c = json.loads(request.data)
+    usuario=c['usuario']
+    contrasena = c['contrasena']
 
-    # Look in database
     db_session = db.getSession(engine)
 
-    try:
-        viajero = db_session.query(entities.Viajero
-            ).filter(entities.Viajero.usuario==username
-            ).filter(entities.Viajero.contrasena==password
-            ).one()
+    viajero = db_session.query(entities.Viajero).filter(
+        entities.Viajero.usuario == usuario
+    ).filter(
+    entities.Viajero.contrasena == contrasena
+    ).first()
+
+    if viajero != None:
+        session['usuario'] = usuario
+        session['logged_user'] = viajero.id
         session['logged_user'] = viajero.id
         message = {'message':'Authorized','user_id':viajero.id,'username':viajero.usuario,'nombre':viajero.nombre}
         return Response(json.dumps(message), status=200,mimetype='application/json')
-    except Exception:
+    else:
         message = {'message':'Unauthorized'}
         return Response(json.dumps(message), status=401,mimetype='application/json')
 
