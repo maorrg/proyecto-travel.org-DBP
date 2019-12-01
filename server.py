@@ -191,7 +191,8 @@ def create_experiencia():
     session = db.getSession(engine)
     session.add(experiencia)
     session.commit()
-    return 'Created Experiencia'
+    message = { 'status': 200, 'message': 'Experiencia creada'}
+    return Response(message, status=200, mimetype='application/json')
 
 
 @app.route('/experiencias', methods = ['GET'])
