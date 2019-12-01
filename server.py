@@ -192,7 +192,7 @@ def create_experiencia():
     session.add(experiencia)
     session.commit()
     message = { 'status': 200, 'message': 'Experiencia creada'}
-    return Response(message, status=200, mimetype='application/json')
+    return Response(json.dumps(message), status=200, mimetype='application/json')
 
 
 @app.route('/experiencias', methods = ['GET'])
