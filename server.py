@@ -276,8 +276,8 @@ def agregar_experiencia_json():
     ).filter(entities.Itinerario.id_viajero == id_viaj).first()
 
     if experiencia == None:
-        session.add(itinerario)
-        session.commit()
+        #session.add(itinerario)
+        #session.commit()
         message = { 'status': 200, 'message': 'Agregado'}
         return Response(json.dumps(message), status=200, mimetype='application/json')
     else:
