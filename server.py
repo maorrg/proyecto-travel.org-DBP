@@ -61,39 +61,35 @@ def create_viajeroDevExtream():
 
 @app.route('/registrar' , methods =['POST'])
 def registrar():
-    nombre = request.form['nombre']
-    apellido = request.form['apellido']
-    correo = request.form['correo']
-    usuario = request.form['usuario']
-    contrasena = request.form['contrasena']
-    edad = request.form['edad']
-    pais = request.form['pais']
 
-    db_session = db.getSession(engine)
+
+    c = json.loads(request.data)
+    datos = entities.Viajero(
+    nombre=c['nombre'],
+    apellido = c['apellido'],
+    correo = c['correo'],
+    usuario = c['usuario'],
+    contrasena = c['contrasena'],
+    edad = c['edad'],
+    pais = c['pais'],
+)
 
     viajero = db_session.query(entities.Viajero).filter(
         entities.Viajero.usuario == usuario
     ).first()
 
     if viajero != None:
-        return "UPS... El usuario ya existe, pruebe con otro o ingrese sesion"
+        message = { 'status': 404, 'message': 'Already exist'}
+        return Response(json.dumps(message), status=404, mimetype='application/json')
 
 
-    viajero = entities.Viajero(
-        nombre= nombre,
-        apellido= apellido,
-        correo= correo,
-        usuario= usuario,
-        contrasena= contrasena,
-        edad = edad,
-        pais = pais
-    )
     session = db.getSession(engine)
     session.add(viajero)
     session.commit()
 
 
-    return 'Viajero ' +usuario+ ' registrado'
+    message = { 'status': 200, 'message': 'Register'}
+    return Response(json.dumps(message), status=200, mimetype='application/json')
 
 
 
