@@ -4,11 +4,17 @@ from model import entities
 import datetime
 import json
 import time
+import os
+from flask_session import Session
+
 
 db = connector.Manager()
 engine = db.createEngine()
+sess = Session()
+
 
 app = Flask(__name__)
+app.secret_key = os.urandom(24)
 
 @app.route('/')
 def index():
@@ -375,5 +381,4 @@ def logout():
 
 
 if __name__ == '__main__':
-    app.secret_key = ".."
     app.run(debug=True,port=8000, threaded=True, host=('127.0.0.1'))
