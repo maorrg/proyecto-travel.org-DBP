@@ -5,7 +5,7 @@ cryptography==2.3
 entrypoints==0.3
 enum34==1.1.6
 Flask==1.1.1
-Flask-Cors==3.0.8
+Flask-Cors==3.0.9
 Flask-Mobility==0.1.1
 Flask-SQLAlchemy==2.4.1
 gunicorn==19.9.0
